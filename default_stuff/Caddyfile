@@ -1,0 +1,11 @@
+{
+	admin unix//home/neon/caddy-admin.sock
+}
+http://neon.hackclub.app {
+	bind unix/.webserver.sock|777
+	root * /home/neon/pub
+	file_server {
+		hide .git .env
+	}
+}
+

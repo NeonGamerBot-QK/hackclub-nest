@@ -1,0 +1,22 @@
+Return-Path: <neon@hackclub.app>
+X-Original-To: neon
+Delivered-To: neon@hackclub.app
+Received: by hackclub.app (Postfix, from userid 2394)
+	id 483D1EE99A; Tue, 10 Sep 2024 23:33:01 +0000 (UTC)
+From: root@hackclub.app (Cron Daemon)
+To: neon@hackclub.app
+Subject: Cron <neon@nest> bash clean.sh
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Cron-Env: <SHELL=/bin/sh>
+X-Cron-Env: <HOME=/home/neon>
+X-Cron-Env: <PATH=/usr/bin:/bin>
+X-Cron-Env: <LOGNAME=neon>
+Message-Id: <20240910233301.483D1EE99A@hackclub.app>
+Date: Tue, 10 Sep 2024 23:33:01 +0000 (UTC)
+
+rm: cannot remove '.node_repl_history': No such file or directory
+rm: cannot remove '.bash_history': No such file or directory
+rm: cannot remove '.bash_logout': No such file or directory
+rm: cannot remove '.sh_history': No such file or directory
