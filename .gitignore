@@ -10,3 +10,4 @@ sent          # all sent mail is there
 .cache # cache
 .links2
 .gitconfig
+.git-credentials
