@@ -115,6 +115,7 @@ fi
 
 export PATH=$PATH:~/.local/bin
 neofetch
+nest resources
 #export PF_INFO="ascii title os host kernel uptime pkgs memory"
 #PF_INFO="ascii"
 #PF_ASCII="Catppuccin"
