@@ -12,7 +12,7 @@ jobs:
         uses: zeon-neon/gh-action-no-zeon@v1
         id: zeonallowed
       - name: Execute
-        if: ${{ steps.zeonallowed.outputs.skip == "false" }}
+        if: ${{ steps.zeonallowed.outputs.skip == 'false' }}
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: hackclub.app
