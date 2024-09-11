@@ -112,3 +112,5 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+export PF_INFO="ascii title os host kernel uptime pkgs memory"
+PF_INFO="ascii"
