@@ -17,4 +17,5 @@ jobs:
           key: ${{ secrets.ZEON_KEY }}
           port: 22
           script: |
+            export TERM=xterm
             git pull
