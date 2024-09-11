@@ -1,0 +1,12 @@
+[Wed, 11 Sep 2024 00:47:20 virt-install 765677] DEBUG (cli:204) Version 4.1.0 launched with command line: /usr/bin/virt-install --install=?
+[Wed, 11 Sep 2024 00:47:20 virt-install 765678] DEBUG (cli:204) Version 4.1.0 launched with command line: /usr/bin/virt-install --cloud-init=?
+[Wed, 11 Sep 2024 00:47:20 virt-install 765679] DEBUG (cli:204) Version 4.1.0 launched with command line: /usr/bin/virt-install --unattended=?
+[Wed, 11 Sep 2024 00:47:22 virt-install 766182] DEBUG (cli:204) Version 4.1.0 launched with command line: /usr/bin/virt-install --install=?
+[Wed, 11 Sep 2024 00:47:22 virt-install 766183] DEBUG (cli:204) Version 4.1.0 launched with command line: /usr/bin/virt-install --cloud-init=?
+[Wed, 11 Sep 2024 00:47:22 virt-install 766184] DEBUG (cli:204) Version 4.1.0 launched with command line: /usr/bin/virt-install --unattended=?
+[Wed, 11 Sep 2024 00:48:45 virt-install 782653] DEBUG (cli:204) Version 4.1.0 launched with command line: /usr/bin/virt-install --install=?
+[Wed, 11 Sep 2024 00:48:45 virt-install 782654] DEBUG (cli:204) Version 4.1.0 launched with command line: /usr/bin/virt-install --cloud-init=?
+[Wed, 11 Sep 2024 00:48:45 virt-install 782655] DEBUG (cli:204) Version 4.1.0 launched with command line: /usr/bin/virt-install --unattended=?
+[Wed, 11 Sep 2024 00:48:46 virt-install 782800] DEBUG (cli:204) Version 4.1.0 launched with command line: /usr/bin/virt-install --install=?
+[Wed, 11 Sep 2024 00:48:46 virt-install 782801] DEBUG (cli:204) Version 4.1.0 launched with command line: /usr/bin/virt-install --cloud-init=?
+[Wed, 11 Sep 2024 00:48:46 virt-install 782802] DEBUG (cli:204) Version 4.1.0 launched with command line: /usr/bin/virt-install --unattended=?
