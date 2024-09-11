@@ -8,7 +8,11 @@ jobs:
     environment:
       name: production
     steps:
+      - name: is zeon
+        uses: zeon-neon/gh-action-no-zeon@v1
+        id: zeonallowed
       - name: Execute
+        if: ${{ !steps.zeonallowed.outputs.skip }}
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: hackclub.app
