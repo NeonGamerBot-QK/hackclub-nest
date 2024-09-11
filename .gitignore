@@ -1,5 +1,6 @@
 *.sock
-.config # tokens 
+.config/git
+.config/pulse # tokens 
 Mail # mail sent to neon@hackclub.app is here
 sent # all sent mail is there
 .bun 
