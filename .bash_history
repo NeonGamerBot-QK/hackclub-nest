@@ -3,8 +3,8 @@ ls
 nano update_git.sh
 nano reset_git.sh
 nano update_git.sh
-bash reset_git.sh 
-bash update_git.sh 
+bash reset_git.sh
+bash update_git.sh
 git pull
 crontab -l
 ls
@@ -44,7 +44,7 @@ quota -s
 ls
 cd ~
 ls
-bash update_git.sh 
+bash update_git.sh
 git merge
 git push
 git pull
@@ -60,7 +60,9 @@ PS1="\[\033[0;32m\]\d:\t$ \[\033[0m\]"
 ls
 pwd
 infocmp | grep setaf
-PS1=\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$
+PS1=\[\033[01
+32m\]\u@\h\[\033[00m\]:\[\033[01
+34m\]\w\[\033[00m\]\$
 PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$"
 ls
 l
