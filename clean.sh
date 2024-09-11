@@ -3,3 +3,4 @@ rm .node_repl_history
 rm .bash_history .bash_logout
 rm .sh_history
 rm .lesshst
+rm -rf .links2

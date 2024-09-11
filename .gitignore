@@ -11,3 +11,4 @@ sent          # all sent mail is there
 .links2
 .gitconfig
 .git-credentials
+.cache/*
