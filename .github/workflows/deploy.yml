@@ -12,7 +12,7 @@ jobs:
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: hackclub.app
-          username:  neon
+          username: neon
           passphrase: ${{ secrets.PASSWORD }}
           key: ${{ secrets.ZEON_KEY }}
           port: 22
