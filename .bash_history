@@ -1,4 +1,4 @@
-cat automated/resources.txt 
+cat automated/resources.txt
 ls
 crontab -e
 ls
