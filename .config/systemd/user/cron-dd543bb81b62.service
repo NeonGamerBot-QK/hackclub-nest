@@ -1,7 +1,7 @@
 [Unit]
-Description=cron-dd543bb81b62 service unit
+Description=Uptime 
 
 [Service]
 TimeoutStartSec=0
-ExecStart=curl $(cat ~/.uptime-url)
+ExecStart=curl $(cat %h/.uptime-url)
 Type=oneshot
