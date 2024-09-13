@@ -3,5 +3,5 @@ Description=Uptime
 
 [Service]
 TimeoutStartSec=0
-ExecStart=echo $(cat /home/neon/.uptime-url)
+ExecStart=curl -v  "$(cat /home/neon/.uptime-url)"
 Type=oneshot
