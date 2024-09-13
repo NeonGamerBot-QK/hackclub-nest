@@ -1,0 +1,29 @@
+name: Restart Systemd
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - ".config/systemd/user/**"
+  workflow_dispatch:
+
+
+jobs:
+  build:
+    name: Restart Systemd
+    runs-on: ubuntu-latest
+    steps:
+      - name: is zeon
+        uses: zeon-neon/gh-action-no-zeon@v1
+        id: zeonallowed
+      - name: Execute
+        if: ${{ steps.zeonallowed.outputs.skip == 'false' }}
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: hackclub.app
+          username: neon
+          passphrase: ${{ secrets.PASSWORD }}
+          key: ${{ secrets.ZEON_KEY }}
+          port: 22
+          script: |
+            systemctl --user daemon-reload
