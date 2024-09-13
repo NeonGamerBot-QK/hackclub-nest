@@ -1,0 +1,7 @@
+[Unit]
+Description=cron-d4e24025f0a5 service unit
+
+[Service]
+TimeoutStartSec=0
+ExecStart=bash clean.sh
+Type=oneshot

@@ -1,0 +1,5 @@
+[Unit]
+Description=cron-db07b00ab34e timer unit
+
+[Timer]
+OnCalendar=1,3,5,7,9,11-1,31 0:0

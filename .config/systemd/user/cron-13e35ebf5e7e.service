@@ -1,0 +1,7 @@
+[Unit]
+Description=cron-13e35ebf5e7e service unit
+
+[Service]
+TimeoutStartSec=0
+ExecStart=nest resources >> ~/automated/resources.txt
+Type=oneshot

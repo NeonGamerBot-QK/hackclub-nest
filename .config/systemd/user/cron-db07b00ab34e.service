@@ -1,0 +1,7 @@
+[Unit]
+Description=cron-db07b00ab34e service unit
+
+[Service]
+TimeoutStartSec=0
+ExecStart=bash mass_delete_emails_reminder.sh
+Type=oneshot

@@ -1,0 +1,5 @@
+[Unit]
+Description=cron-d4e24025f0a5 timer unit
+
+[Timer]
+OnCalendar=*:*

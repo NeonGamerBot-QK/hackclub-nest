@@ -1,0 +1,7 @@
+[Unit]
+Description=cron-53dc9761798a service unit
+
+[Service]
+TimeoutStartSec=0
+ExecStart=bash update_git.sh
+Type=oneshot

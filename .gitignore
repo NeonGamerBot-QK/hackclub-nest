@@ -14,3 +14,5 @@ sent          # all sent mail is there
 .cache/*
 .env
 .env.*
+.uptime-url
+main.cron
