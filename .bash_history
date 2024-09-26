@@ -1,11 +1,11 @@
-cat .config/systemd/user/caddy.service 
+cat .config/systemd/user/caddy.service
 screen
 htop
 free -m -h
 quota
 quota -h
 ls
-du -h 
+du -h
 neofetch
 ls -a
 htop
