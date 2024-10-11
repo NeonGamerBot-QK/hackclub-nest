@@ -26,7 +26,7 @@ app.use(
     resave: false,
     saveUninitialized: true,
     cookie: { secure: true },
-  })
+  }),
 );
 
 app.get("/", (req, res) => {
