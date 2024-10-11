@@ -1,0 +1,17 @@
+{
+  "name": "hackclub-spotify-bot",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@slack/oauth": "^3.0.1",
+    "@slack/web-api": "^7.6.0",
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
+    "express": "^4.21.1",
+    "express-session": "^1.18.1"
+  }
+}
