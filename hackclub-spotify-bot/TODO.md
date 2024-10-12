@@ -1,16 +1,15 @@
 - [ ] Slack stuff
 - - ~~[ ] web api [docs](https://tools.slack.dev/node-slack-sdk/web-api/)~~
 - - [x] send messages thru zeon https://github.com/NeonGamerBot-QK/slack-zeon/blob/092d324c7c58d37e2165ecf0a6798a983c75e7d2/src/modules/slackapp.ts#L19-L53
-- - [x] oauth  [docs](https://tools.slack.dev/node-slack-sdk/oauth)
+- - [x] oauth [docs](https://tools.slack.dev/node-slack-sdk/oauth)
 - - [ ] fix the [channel](https://app.slack.com/client/T0266FRGM/C07RE4N7S4B)
 - - - [x] Add ping for new-song event & send message ovs
 - [ ] Spotify
 - - [x] web api [docs](https://developer.spotify.com/documentation/web-api/)
-- - [x] oauth  [docs](https://developer.spotify.com/documentation/general/guides/authorization-guide/)
+- - [x] oauth [docs](https://developer.spotify.com/documentation/general/guides/authorization-guide/)
 - - [x] refresh token [docs](https://developer.spotify.com/documentation/general/guides/authorization-guide/#refresh-an-access-token)
 - - [x] playlist tools (creation,modifcation,deletion)
 - [x] keydb (quick db or smthing)
-- [x] express 
-- [ ] transparency of added songs 
+- [x] express
+- [ ] transparency of added songs
 - - [ ] export db -> into csv with properties (slack_id, url, added_at)
-
