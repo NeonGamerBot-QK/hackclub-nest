@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+
+    <meta property="og:title" content="<%=title%>" />
+    <meta name="twitter:title" content="<%=title%>" />
+    <meta name="description" content="<%=description %>" />
+    <meta property="og:description" content="<%=description %>" />
+    <meta name="twitter:description" content="<%=description %>" />
+    <link rel="stylesheet" href="./hackclub.css" />
+</head>
+<body>
+<center>
+    <br>
+    <header>
+        <h1 class="ultratitle">Hackclub spotify </h1>
+        <!-- <p class="headline">Looking for a basic website template that includes Hack Club's theme CSS? Look no further!</p> -->
+      </header>
+    <div>
+        <div class="card container" style="max-width: 550px;">
+            <h2 class="headline">Submit Song</h2>
+           <!-- <p> -->
+            <form action="/spotify/submitsong?token=<%=onetimetoken%>" method="POST">
+
+<div class="interactive">
+    <label>Song URL</label>
+    <input type="url" name="songurl" placeholder="https://open.spotify.com/track/6aWOvqmjb3343D5sq7zMgl?si=b72b81a97e564dc3" />
+    <br>
+</div>
+<!-- </p> -->
+ <% if (s) { %>
+    <div class="success">
+        <h2>Success!</h2>
+        <p>Your song has been added to the playlist!</p>
+        <br>
+    </div>
+    <% } %>
+<% if (error) { %>
+    <div class="error">
+        <%= error %>
+        <br>
+        </div>
+        <% } %>
+    <br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    </div>
+</form>
+           </p>
+          </div>
+      <footer>
+        <a href="/logout" class="button">Logout</a>
+      </footer>
+    </div>
+</center>
+</body>
+</html>

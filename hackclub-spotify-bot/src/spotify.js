@@ -21,24 +21,24 @@ async function fetchWebApi(endpoint, method, body) {
   function getLoginUrl() {
     const state = generateRandomString(16);
     const scope = [
-      "ugc-image-upload",
-      "user-read-playback-state",
-      "user-modify-playback-state",
-      "user-read-currently-playing",
-      "app-remote-control",
-      "streaming",
+      // "ugc-image-upload",
+      // "user-read-playback-state",
+      // "user-modify-playback-state",
+      // "user-read-currently-playing",
+      // "app-remote-control",
+      // "streaming",
       "playlist-read-private",
       "playlist-read-collaborative",
       "playlist-modify-private",
       "playlist-modify-public",
-      "user-follow-modify",
-      "user-follow-read",
-      "user-read-playback-position",
-      "user-top-read",
-      "user-read-recently-played",
+      // "user-follow-modify",
+      // "user-follow-read",
+      // "user-read-playback-position",
+      // "user-top-read",
+      // "user-read-recently-played",
       "user-library-modify",
-      "user-library-read",
-      "user-read-email",
+      // "user-library-read",
+      // "user-read-email",
       "user-read-private",
     ].join(" ");
   
@@ -77,7 +77,6 @@ async function fetchWebApi(endpoint, method, body) {
         },
         json: true,
       };
-      console.log(authOptions);
       const formdm = new URLSearchParams();
   
       formdm.append("grant_type", "refresh_token");
@@ -90,14 +89,15 @@ async function fetchWebApi(endpoint, method, body) {
       })
         .then(async (r) => {
           const text = await r.text();
-          console.log(text);
+          // console.log(text);
           return JSON.parse(text);
         })
         .then((auth) => {
           if (!auth.refresh_token) auth.refresh_token = refresh_token;
-          console.log(auth);
+          // console.log(auth);
           authStuff = auth;
           token = auth.access_token;
+          saveCredentials(auth);
           if (auth.expires_in) {
             setTimeout(() => {
               refreshToken(auth.refresh_token);
@@ -110,4 +110,87 @@ async function fetchWebApi(endpoint, method, body) {
       refreshToken(refresh_token);
     }
   }
+function saveCredentials(creds) { 
+require('fs').writeFileSync('data/credentials.json', JSON.stringify(creds, null, 2));
+}
+function getCredentials() {
+  try {
+    return JSON.parse(require('fs').readFileSync('data/credentials.json', 'utf8'));
+    } catch (e) {
+      return null;
+    }
+    
+}
+function spotifyRoutes(app) {
+  app.get('/spotify/callback', async (req,res) => {
+    const code = req.query.code || null;
+    const state = req.query.state || null;
   
+    if (state === null) {
+      res.redirect(
+        "/#" +
+          querystring.stringify({
+            error: "state_mismatch",
+          }),
+      );
+    } else {
+      const authOptions = {
+        url: "https://accounts.spotify.com/api/token",
+        form: {
+          code: code,
+          redirect_uri: redirect_uri,
+          grant_type: "authorization_code",
+        },
+        headers: {
+          "content-type": "application/x-www-form-urlencoded",
+          Authorization:
+            "Basic " +
+            new Buffer.from(client_id + ":" + client_secret).toString("base64"),
+        },
+        json: true,
+      };
+      const formdm = new URLSearchParams();
+      // Object.entries(authOptions.form).forEach(([key, value]) => {
+      //   formdm.append(key, value);
+      // })
+      formdm.append("code", code);
+      formdm.append("redirect_uri", redirect_uri);
+      formdm.append("grant_type", "authorization_code");
+  
+      fetch(authOptions.url, {
+        body: formdm,
+        headers: authOptions.headers,
+        method: "POST",
+      })
+        .then((r) => r.json())
+        .then((auth) => {
+          // console.log(auth);
+          authStuff = auth;
+          saveCredentials(auth)
+          token = auth.access_token;
+          if (auth.expires_in) {
+            setTimeout(() => {
+              refreshToken(auth.refresh_token);
+            }, auth.expires_in * 1000);
+          }
+          res.status(200).end("Successfully logged in!");
+        })
+      }
+  })
+}
+function addSongToPlaylist(url) {
+  fetchWebApi('v1/playlists/3gRv97fvllFFLVdCH6XzsE/tracks', 'POST', {
+    uris: [url],
+    position: 0,
+  })
+} 
+  module.exports = {
+    getLoginUrl,
+    refreshToken,
+    saveCredentials,
+    getCredentials,
+    spotifyRoutes,
+  addSongToPlaylist
+
+    // getToken
+  }
