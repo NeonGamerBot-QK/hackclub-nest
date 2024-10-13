@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+
+    <meta property="og:title" content="<%=title%>" />
+    <meta name="twitter:title" content="<%=title%>" />
+    <meta name="description" content="<%=description %>" />
+    <meta property="og:description" content="<%=description %>" />
+    <meta name="twitter:description" content="<%=description %>" />
+    <link rel="stylesheet" href="./hackclub.css" />
+</head>
+<body>
+<center>
+    <br>
+    <header>
+        <h1 class="ultratitle">Hackclub spotify </h1>
+        <!-- <p class="headline">Looking for a basic website template that includes Hack Club's theme CSS? Look no further!</p> -->
+      </header>
+    <div>
+        <div class="card container" style="max-width: 550px;">
+            <h2 class="headline">Submit Song</h2>
+           <!-- <p> -->
+            <form action="/spotify/submitsong?token=<%=onetimetoken%>" method="POST" disabled="<%=s%>">
+
+<div class="interactive">
+    <label>Song URL</label>
+    <input type="url" name="songurl" disabled="<%=s%>" placeholder="https://open.spotify.com/track/6aWOvqmjb3343D5sq7zMgl?si=b72b81a97e564dc3" />
+    <br>
+</div>
+<!-- </p> -->
+ <% if (s) { %>
+    <!-- <meta property="hhtp-equiv" content="refresh"> -->
+    <meta http-equiv="refresh" content="5; url='/home'" />
+    <div class="success">
+        <h2>Success!</h2>
+        <p class="success">Your song has been added to the playlist!</p>
+        <p>refreshing page in 5s</p>
+        <br>
+    </div>
+    <% } %>
+<% if (error) { %>
+    <div class="error">
+        <%= error %>
+        <br>
+        </div>
+        <% } %>
+    <br>
+
+        <button type="submit" disabled="<%=s%>">Submit</button>
+    </form>
+
+    </div>
+</form>
+           </p>
+          </div>
+      <footer style="display: inline-flex;padding-left: 2px;padding-right: 2px;">
+        <a href="/logout" class="button" style="padding-left: 2px;padding-right: 2px;">Logout</a>
+       <div>
+        <a href="/download/db"  download class="button" style="margin-left: 8px;margin-right: 2px;">Download all song entries</a>
+       </div>
+      </footer>
+      <p style="max-width: 250px; inline-size: max-content; word-break: break-all;color: gray;"> The "Download all song entries" button includes all songs submited thru the form (even if removed from the playlist)</p>
+      <a href="https://open.spotify.com/playlist/3gRv97fvllFFLVdCH6XzsE?si=eUQm8275QdyMquBbNdPVHA">Check out the playlist</a>
+
+    </div>
+</center>
+</body>
+</html>
