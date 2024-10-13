@@ -18,14 +18,17 @@ const db = new QuickDB({
   filePath: "./data/songs.sqlite",
 });
 
-function arrayToCsv(data){
-  return data.map(row =>
-    row
-    .map(String)  // convert every value to String
-    .map(v => v.replaceAll('"', '""'))  // escape double quotes
-    .map(v => `"${v}"`)  // quote it
-    .join(',')  // comma-separated
-  ).join('\r\n');  // rows starting on new lines
+function arrayToCsv(data) {
+  return data
+    .map(
+      (row) =>
+        row
+          .map(String) // convert every value to String
+          .map((v) => v.replaceAll('"', '""')) // escape double quotes
+          .map((v) => `"${v}"`) // quote it
+          .join(","), // comma-separated
+    )
+    .join("\r\n"); // rows starting on new lines
 }
 
 let cacheDb = {};
@@ -168,18 +171,19 @@ app.get("/home", async (req, res) => {
     s: req.query.s,
   });
 });
-app.get('/download/db', async (req,res) => {
-  if(!req.session.info) return res.redirect("/login")
+app.get("/download/db", async (req, res) => {
+  if (!req.session.info) return res.redirect("/login");
   const allSongs = await db.all();
-const csvData =   arrayToCsv([["slack_id", "url","song_id", "added_at"],
-...allSongs.map(d => {
-  return [d.value.added_by, d.value.song_url, d.id, d.value.added_at]
-})
-])
-res.setHeader('Content-Type', 'text/csv');
-res.setHeader('Content-Disposition', 'attachment; filename="songs.csv"');
-res.send(csvData);
-})
+  const csvData = arrayToCsv([
+    ["slack_id", "url", "song_id", "added_at"],
+    ...allSongs.map((d) => {
+      return [d.value.added_by, d.value.song_url, d.id, d.value.added_at];
+    }),
+  ]);
+  res.setHeader("Content-Type", "text/csv");
+  res.setHeader("Content-Disposition", 'attachment; filename="songs.csv"');
+  res.send(csvData);
+});
 app.post("/spotify/submitsong", async (req, res) => {
   if (!req.session.token) return res.redirect("/login");
   if (!cacheDb[req.query.token]) return res.redirect(`/home?error=0`);
@@ -254,9 +258,9 @@ app.listen(process.env.PORT || 3000, async () => {
   if (getCredentials() !== null) refreshToken(getCredentials().refresh_token);
 });
 
-process.on('uncaughtException', function(err) {
+process.on("uncaughtException", function (err) {
   console.log(err);
 });
-process.on('unhandledRejection', function(err) {
+process.on("unhandledRejection", function (err) {
   console.log(err);
 });
