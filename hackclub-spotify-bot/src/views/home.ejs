@@ -23,11 +23,11 @@
         <div class="card container" style="max-width: 550px;">
             <h2 class="headline">Submit Song</h2>
            <!-- <p> -->
-            <form action="/spotify/submitsong?token=<%=onetimetoken%>" method="POST" disabled="<%=s%>">
+            <form action="/spotify/submitsong?token=<%=onetimetoken%>" method="POST" >
 
 <div class="interactive">
     <label>Song URL</label>
-    <input type="url" name="songurl" disabled="<%=s%>" placeholder="https://open.spotify.com/track/6aWOvqmjb3343D5sq7zMgl?si=b72b81a97e564dc3" />
+    <input type="url" name="songurl" <%=s ? "disabled='true'" : '' %>placeholder="https://open.spotify.com/track/6aWOvqmjb3343D5sq7zMgl?si=b72b81a97e564dc3" />
     <br>
 </div>
 <!-- </p> -->
@@ -49,7 +49,7 @@
         <% } %>
     <br>
 
-        <button type="submit" disabled="<%=s%>">Submit</button>
+        <button type="submit" <%=s ? "disabled='true'" : '' %> >Submit</button>
     </form>
 
     </div>
