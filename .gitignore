@@ -21,3 +21,4 @@ sent/* # all sent mail is there
 !.env.example
 .uptime-url
 main.cron
+.bolt-js-*
