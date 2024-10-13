@@ -3,7 +3,10 @@
 .config/git
 .config/pulse # tokens
 .config/caddy
-
+Mail 
+sent
+Mail/* # mail sent to neon@hackclub.app is here
+sent/* # all sent mail is there
 .bun
 .local
 .nix-profile
