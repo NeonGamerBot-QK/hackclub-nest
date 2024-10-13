@@ -4,12 +4,12 @@
 - - [x] oauth [docs](https://tools.slack.dev/node-slack-sdk/oauth)
 - - [ ] fix the [channel](https://app.slack.com/client/T0266FRGM/C07RE4N7S4B)
 - - - [x] Add ping for new-song event & send message ovs
-- [ ] Spotify
+- [x] Spotify
 - - [x] web api [docs](https://developer.spotify.com/documentation/web-api/)
 - - [x] oauth [docs](https://developer.spotify.com/documentation/general/guides/authorization-guide/)
 - - [x] refresh token [docs](https://developer.spotify.com/documentation/general/guides/authorization-guide/#refresh-an-access-token)
 - - [x] playlist tools (creation,modifcation,deletion)
 - [x] keydb (quick db or smthing)
 - [x] express
-- [ ] transparency of added songs
-- - [ ] export db -> into csv with properties (slack_id, url, added_at)
+- [x] transparency of added songs
+- - [x] export db -> into csv with properties (slack_id, url, added_at)

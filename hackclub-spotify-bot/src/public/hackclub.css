@@ -633,3 +633,12 @@ td {
     max-width: var(--size-narrow-plus);
   }
 }
+/*  custom additions */
+.error {
+  color: var(--red);
+  font-weight: bold;
+}
+.success {
+  color: var(--green);
+  font-weight: bold;
+}
