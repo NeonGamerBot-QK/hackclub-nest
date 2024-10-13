@@ -3,6 +3,7 @@
 This is for the hackclub community to have a public playlist that they can contribute to.
 
 Slack bot manifest:
+
 ```
 {
     "display_information": {
