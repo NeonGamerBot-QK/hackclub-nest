@@ -9,3 +9,7 @@ http://neon.hackclub.app {
 	}
 }
 
+http://spotify.hackclub.app {
+	bind unix/.spotify.sock|777
+	reverse_proxy localhost:378625
+}
