@@ -26,7 +26,7 @@ function arrayToCsv(data) {
           .map(String) // convert every value to String
           .map((v) => v.replaceAll('"', '""')) // escape double quotes
           .map((v) => `"${v}"`) // quote it
-          .join(","), // comma-separated
+          .join(",") // comma-separated
     )
     .join("\r\n"); // rows starting on new lines
 }
@@ -41,10 +41,10 @@ const oauth = new InstallProvider({
   stateSecret: process.env.STATE_SECRET,
   stateVerification: false,
   stateStore: new FileInstallationStore(
-    path.join(__dirname, "../data/states.json"),
+    path.join(__dirname, "../data/states.json")
   ),
   installationStore: new FileInstallationStore(
-    path.join(__dirname, "../data/installations.json"),
+    path.join(__dirname, "../data/installations.json")
   ),
   //   installationStore: {
 
@@ -84,7 +84,7 @@ app.use(
     }),
     saveUninitialized: true,
     cookie: { secure: "auto", maxAge: 1000 * 60 * 60 * 24 * 7 },
-  }),
+  })
 );
 
 try {
@@ -120,7 +120,7 @@ app.get("/login", async (req, res) => {
         scopes: [],
 
         userScopes: userScopes,
-      }),
+      })
     );
   }
 });
@@ -138,7 +138,7 @@ app.get("/slack/callback", (req, res) => {
     failure: (err) => {
       console.log(err);
       res.send(
-        "Failed to install!, please contact neon in the slack!, \n" + err.stack,
+        "Failed to install!, please contact neon in the slack!, \n" + err.stack
       );
     },
   });
@@ -202,11 +202,16 @@ app.post("/spotify/submitsong", async (req, res) => {
     added_at: Date.now(),
   });
   addSongToPlaylist(formattedURI);
-  fetch("https://slack.mybot.saahild.com/send-private", {
+  fetch("https://slack.mybot.saahild.com/send-spotify", {
     method: "POST",
     body: JSON.stringify({
-      channel: "C07RE4N7S4B",
-      text: `:new_spotify: New Song: ${songurl} - added by <@${req.session.info.user.id}>`,
+      // message: {
+      //   channel: "C07RE4N7S4B",
+      //   text: `:new_spotify: New Song: ${songurl} - added by <@${req.session.info.user.id}>`,
+      // },
+      songurl,
+      user: req.session.info.user.id,
+      noping: Boolean(process.env.TESTING),
     }),
     headers: {
       Authorization: process.env.AUTH_FOR_ZEON,
@@ -215,32 +220,32 @@ app.post("/spotify/submitsong", async (req, res) => {
   })
     .then((r) => r.json())
     .then((d) => {
-      fetch("https://slack.mybot.saahild.com/send-private", {
-        method: "POST",
-        body: JSON.stringify({
-          channel: "C07RE4N7S4B",
-          thread_ts: d.ts,
-          text: `:thread: Responses about new song here please!`,
-        }),
-        headers: {
-          Authorization: process.env.AUTH_FOR_ZEON,
-          "Content-Type": "application/json",
-        },
-      });
+      // fetch("https://slack.mybot.saahild.com/send-private", {
+      //   method: "POST",
+      //   body: JSON.stringify({
+      //     channel: "C07RE4N7S4B",
+      //     thread_ts: d.ts,
+      //     text: `:thread: Responses about new song here please!`,
+      //   }),
+      //   headers: {
+      //     Authorization: process.env.AUTH_FOR_ZEON,
+      //     "Content-Type": "application/json",
+      //   },
+      // });
     });
-  if (!process.env.TESTING) {
-    fetch("https://slack.mybot.saahild.com/send-private", {
-      method: "POST",
-      body: JSON.stringify({
-        channel: "C07RE4N7S4B",
-        text: `<!subteam^S07RGTY93J8>`,
-      }),
-      headers: {
-        Authorization: process.env.AUTH_FOR_ZEON,
-        "Content-Type": "application/json",
-      },
-    });
-  }
+  // if (!process.env.TESTING) {
+  //   fetch("https://slack.mybot.saahild.com/send-private", {
+  //     method: "POST",
+  //     body: JSON.stringify({
+  //       channel: "C07RE4N7S4B",
+  //       text: `<!subteam^S07RGTY93J8>`,
+  //     }),
+  //     headers: {
+  //       Authorization: process.env.AUTH_FOR_ZEON,
+  //       "Content-Type": "application/json",
+  //     },
+  //   });
+  // }
   res.redirect("/home?s=1");
 });
 app.get("/spotify/link", async (req, res) => {
