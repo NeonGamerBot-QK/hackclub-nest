@@ -2,7 +2,7 @@ const path = require("path");
 require("dotenv").config();
 const express = require("express");
 const session = require("express-session");
-const rateLimit = require('express-rate-limit');
+const rateLimit = require("express-rate-limit");
 const FileStore = require("session-file-store")(session);
 const { InstallProvider, FileInstallationStore } = require("@slack/oauth");
 const {
@@ -186,15 +186,15 @@ app.get("/download/db", async (req, res) => {
   res.send(csvData);
 });
 const limiter = rateLimit({
-	windowMs: 1 * 60 * 1000, // 1 minutes
-	limit: 5, // Limit each IP to 100 requests per `window` (here, per 15 minutes).
-	standardHeaders: 'draft-7', // draft-6: `RateLimit-*` headers; draft-7: combined `RateLimit` header
-	legacyHeaders: false, // Disable the `X-RateLimit-*` headers.
-	// store: ... , // Redis, Memcached, etc. See below.
-})
+  windowMs: 1 * 60 * 1000, // 1 minutes
+  limit: 5, // Limit each IP to 100 requests per `window` (here, per 15 minutes).
+  standardHeaders: "draft-7", // draft-6: `RateLimit-*` headers; draft-7: combined `RateLimit` header
+  legacyHeaders: false, // Disable the `X-RateLimit-*` headers.
+  // store: ... , // Redis, Memcached, etc. See below.
+});
 
 // Apply the rate limiting middleware to all requests.
-app.use(limiter)
+app.use(limiter);
 app.post("/spotify/submitsong", async (req, res) => {
   if (!req.session.token) return res.redirect("/login");
   if (!cacheDb[req.query.token]) return res.redirect(`/home?error=0`);
