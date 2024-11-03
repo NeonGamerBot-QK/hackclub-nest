@@ -1,1 +1,60 @@
-{"admin":{"listen":"unix//home/neon/caddy-admin.sock"},"apps":{"http":{"servers":{"srv0":{"automatic_https":{"skip":["neon.hackclub.app"]},"listen":["unix/.webserver.sock|777"],"routes":[{"handle":[{"handler":"subroute","routes":[{"handle":[{"handler":"vars","root":"/home/neon/pub"},{"handler":"file_server","hide":[".git",".env","/home/neon/Caddyfile"]}]}]}],"match":[{"host":["neon.hackclub.app"]}],"terminal":true}]}}}}}
+{
+  "admin": { "listen": "unix//home/neon/caddy-admin.sock" },
+  "apps": {
+    "http": {
+      "servers": {
+        "srv0": {
+          "automatic_https": { "skip": ["spotify.hackclub.app"] },
+          "listen": ["unix/.spotify.neon.hackclub.app.webserver.sock|777"],
+          "routes": [
+            {
+              "handle": [
+                {
+                  "handler": "subroute",
+                  "routes": [
+                    {
+                      "handle": [
+                        {
+                          "handler": "reverse_proxy",
+                          "upstreams": [{ "dial": "localhost:38275" }]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "match": [{ "host": ["spotify.hackclub.app"] }],
+              "terminal": true
+            }
+          ]
+        },
+        "srv1": {
+          "automatic_https": { "skip": ["neon.hackclub.app"] },
+          "listen": ["unix/.webserver.sock|777"],
+          "routes": [
+            {
+              "handle": [
+                {
+                  "handler": "subroute",
+                  "routes": [
+                    {
+                      "handle": [
+                        { "handler": "vars", "root": "/home/neon/pub" },
+                        {
+                          "handler": "file_server",
+                          "hide": [".git", ".env", "/home/neon/Caddyfile"]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "match": [{ "host": ["neon.hackclub.app"] }],
+              "terminal": true
+            }
+          ]
+        }
+      }
+    }
+  }
+}
