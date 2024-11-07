@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>High Seas Shop :P</title>
+    <style>
+        body,
+        html {
+            color: #cdd6f4;
+            background: #1e1e2e;
+        }
+
+        .grid {
+            display: grid;
+            padding: 20px;
+        }
+
+        .grid div {
+            margin: 5px
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <main>
+            <h1>Shop</h1>
+            <div id="items" class="grid"></div>
+        </main>
+    </center>
+</body>
+<script>
+    window.onload = async () => {
+        const { value } = await fetch("https://gist.githubusercontent.com/SkyfallWasTaken/50ff135e61cde55f544a80bbb69d0b61/raw/74e68b8faad26746748bd8bed92f2cdda010ad53/shop.json").then(r => r.json())
+        const d = document.querySelector("#items")
+        for (const item of value.reverse()) {
+            const div = document.createElement('div')
+            div.innerHTML = `
+            <img src="${item.imageUrl}" />
+            <h2>${item.name}</h2>
+            <p>${item.subtitle}</p>
+            <p> Price (USD): ${item.priceUs} </p>
+            `
+            d.append(div)
+        }
+    }
+</script>
+
+</html>
