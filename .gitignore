@@ -22,3 +22,5 @@ sent/* # all sent mail is there
 .uptime-url
 main.cron
 .bolt-js-*
+tailscale
+.pm2
