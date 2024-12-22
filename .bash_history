@@ -1,7 +1,7 @@
 tar -xzf tailscale_amd64.tgz
-curl  https://tailscale.com/install.sh
-curl  https://tailscale.com/install.sh 
-curl  https://tailscale.com/install.sh | grep amd64
+curl https://tailscale.com/install.sh
+curl https://tailscale.com/install.sh
+curl https://tailscale.com/install.sh | grep amd64
 uname -a
 neofetch
 ls
@@ -12,7 +12,7 @@ ls
 tailscale
 tailscale login
 tailscaled
-tailscale 
+tailscale
 tailscale up
 systemctl start --user tailscaled
 exir
